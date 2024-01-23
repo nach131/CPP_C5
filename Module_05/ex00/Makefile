@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/01/07 13:37:49 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/01/23 10:16:05 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MAKEFLAGS += --silent	# Silence makefile [Commented by default]\n
 
 # ═══ NAMES ═══════════════════════════════════════════════════════════════════#
 
-NAME	=	Polymorphism
+NAME	=	Mommy,_when_I_grow_up,_I_want_to_be_a_bureaucrat
 
 
 # ═══ COMPILATE ═══════════════════════════════════════════════════════════════#
