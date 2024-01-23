@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:51:22 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 16:51:23 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/23 20:15:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 #define ENDB "\x1B[46m\x1B[1;97m"
 
 #define BURO "\x1B[45m\x1B[97m"
-#define CAT_C "\x1B[43m\x1B[90m"
+#define FORM "\x1B[43m\x1B[90m"
 #define DOG_C "\x1B[44m\x1B[97m"
 #define DIAM "\x1B[30m\x1B[46m"
 

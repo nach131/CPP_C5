@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:51:13 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 16:56:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:12:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,34 @@
 class Form
 {
 private:
-	const std::string _nameForm;
+	std::string const _name;
 	bool _signed;
-	const int _gradeSign;
-	const int _gradeExe;
+	int const _gradeSig;
+	int const _gradeExe;
+	Form();
 
 public:
-	Form();
-	Form(const Form &);
+	Form(const std::string name, int gradeSig, int gradeExe);
+	// Form(const Form &);
 	~Form();
-	Form &operator=(const Form &);
+	// Form &operator=(const Form &);
+
+	void checkGrade(int, int) const;
+
+	std::string getName() const;
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	} e_high;
+
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	} e_low;
 };
+
+std::ostream &operator<<(std::ostream, const Form &tmp);
 
 #endif
