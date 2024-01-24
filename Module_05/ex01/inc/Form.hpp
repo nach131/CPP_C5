@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:51:13 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 22:12:35 by nmota-bu         ###   ########.fr       */
+/*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
+/*   Updated: 2024/01/24 09:48:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@
 class Form
 {
 private:
-	std::string const _name;
-	bool _signed;
-	int const _gradeSig;
-	int const _gradeExe;
-	Form();
+	const std::string _name;
+	const int _grade;
+	void checkGrade(int grade) const;
+	// Form();
 
 public:
-	Form(const std::string name, int gradeSig, int gradeExe);
-	// Form(const Form &);
+	Form(const std::string, int);
+	Form(const Form &);
 	~Form();
-	// Form &operator=(const Form &);
-
-	void checkGrade(int, int) const;
+	Form &operator=(const Form &);
 
 	std::string getName() const;
+	int getGrade() const;
+	void up(int);
+	void down(int);
+
 	class GradeTooHighException : public std::exception
 	{
 	public:
@@ -46,6 +47,6 @@ public:
 	} e_low;
 };
 
-std::ostream &operator<<(std::ostream, const Form &tmp);
+std::ostream &operator<<(std::ostream &out, const Form &tmp);
 
 #endif

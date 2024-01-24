@@ -5,64 +5,66 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:51:29 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 22:21:55 by nmota-bu         ###   ########.fr       */
+/*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
+/*   Updated: 2024/01/24 09:48:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
 #include "Colors_ft.hpp"
+#include "Form.hpp"
 
-void Form::checkGrade(int gradeSig, int gradeExe) const
+void Form::checkGrade(int grade) const
 {
-	if (gradeSig < 1 || gradeExe < 1)
+	if (grade < 1)
 		throw e_low;
-	else if (gradeSig > 150 || gradeExe > 150)
+	else if (grade > 150)
 		throw e_high;
 }
 
-// Form::Form() : _name(""), _signed(false), _gradeSig(0), _gradeExe(0)
-// {
-// 	std::cout << FORM << "[Form]" << GREEN << "       - Constructor without parameter" << RESET << std::endl;
-// }
-
-Form::Form(std::string name, int s_grade, int e_grade) : _name(name), _gradeSig(s_grade), _gradeExe(e_grade)
+Form::Form(const std::string name, int grade) : _name(name), _grade(grade)
 {
-
-	std::cout << FORM << "[Form]" << GREEN << "       - Constructor" << RESET << std::endl;
-	checkGrade(s_grade, e_grade);
-	// const_cast<std::string &>(this->_nameForm) = name;
-	// this->_gradeSig = gradeSig;
-	// this->_gradeExe = gradeExe;
+	std::cout << BURO << "[Form]" << GREEN << " - Constructor" << RESET << std::endl;
+	checkGrade(grade);
 }
 
-Form::~Form()
+Form::Form(const Form &tmp) : _name(tmp._name), _grade(tmp._grade) {}
+
+Form::~Form() { std::cout << BURO << "[Form]" << RED << " - Destructor" << RESET << std::endl; }
+
+Form &Form::operator=(const Form &tmp)
 {
-	std::cout << FORM << "[Form]" << RED << "       - Destructor" << RESET << std::endl;
+	std::cout << BURO << "[Form]" << YELLOW << " - Assignation operator" << RESET << std::endl;
+
+	if (this != &tmp)
+	{
+		const_cast<std::string &>(_name) = tmp._name;
+		const_cast<int &>(_grade) = tmp._grade;
+	}
+	return *this;
 }
-
-// Form &Form::operator=(const Form &tmp)
-// {
-// 	std::cout << FORM << "[Form]" << YELLOW << "       - Assignation operator" << RESET << std::endl;
-
-// 	if (this != &tmp)
-// 	{
-// 		;
-// 	}
-// 	return *this;
-// }
 
 std::string Form::getName() const { return this->_name; }
 
-std::ostream &operator<<(std::ostream &out, const Form &form)
+int Form::getGrade() const { return this->_grade; }
+
+std::ostream &operator<<(std::ostream &out, const Form &tmp)
 {
-	out << "------------- Form Info -------------" << std::endl;
-	out << "Form name: " << form.getName() << std::endl;
-	//   << "Grade to sign: " << form.getGradeToSign() << std::endl
-	//   << "Grade to execute: " << form.getGradeToExecute();
+	out << tmp.getName() << ", Form grade " << tmp.getGrade();
 	return out;
 }
 
 const char *Form::GradeTooHighException::what() const throw() { return ERROR "[ Exception ] Grade can't be higher than [ 150 ]" RESET; }
 
 const char *Form::GradeTooLowException::what() const throw() { return ERROR "[ Exception ] Grade can't be lower than [ 1 ]" RESET; }
+
+void Form::up(int num)
+{
+	const_cast<int &>(_grade) -= num;
+	checkGrade(_grade);
+}
+
+void Form::down(int num)
+{
+	const_cast<int &>(_grade) += num;
+	checkGrade(_grade);
+}
