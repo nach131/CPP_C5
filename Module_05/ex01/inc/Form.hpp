@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 09:48:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:06:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,22 @@ class Form
 {
 private:
 	const std::string _name;
-	const int _grade;
+	const int _gradeSig;
+	const int _gradeExe;
+	bool _isSigned;
 	void checkGrade(int grade) const;
-	// Form();
+	Form();
 
 public:
-	Form(const std::string, int);
+	Form(const std::string, int, int);
 	Form(const Form &);
 	~Form();
 	Form &operator=(const Form &);
 
 	std::string getName() const;
-	int getGrade() const;
-	void up(int);
-	void down(int);
+	std::string getSigned() const;
+	int getGradeSig() const;
+	int getGradeExe() const;
 
 	class GradeTooHighException : public std::exception
 	{
