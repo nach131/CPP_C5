@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 13:06:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "iostream"
 
+class Bureaucrat;
+
 class Form
 {
 private:
@@ -22,7 +24,7 @@ private:
 	const int _gradeSig;
 	const int _gradeExe;
 	bool _isSigned;
-	void checkGrade(int grade) const;
+	void checkGrade(int grade, int exe) const;
 	Form();
 
 public:
@@ -35,6 +37,7 @@ public:
 	std::string getSigned() const;
 	int getGradeSig() const;
 	int getGradeExe() const;
+	void beSigned(Bureaucrat &);
 
 	class GradeTooHighException : public std::exception
 	{

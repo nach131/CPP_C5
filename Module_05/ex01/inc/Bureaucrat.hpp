@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 16:31:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:11:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define BUREAUCRAT_HPP
 
 #include "iostream"
+
+class Form;
 
 class Bureaucrat
 {
@@ -33,6 +35,7 @@ public:
 	int getGrade() const;
 	void up(int);
 	void down(int);
+	void signForm(Form &);
 
 	class GradeTooHighException : public std::exception
 	{

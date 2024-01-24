@@ -6,12 +6,13 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 16:45:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:25:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Colors_ft.hpp"
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 void Bureaucrat::checkGrade(int grade) const
 {
@@ -77,4 +78,20 @@ void Bureaucrat::down(int num)
 {
 	checkGrade(this->_grade - num);
 	this->_grade -= num;
+}
+
+void Bureaucrat::signForm(Form &tmp)
+{
+	if (tmp.getSigned() == "false")
+		try
+		{
+			tmp.beSigned(*this);
+			std::cout << this->getName() << " signs " << tmp.getName() << std::endl;
+		}
+		catch (Form::GradeTooLowException &e)
+		{
+			std::cout << this->getName() << " couldn’t sign " << tmp.getName() << " because " << e.what() << std::endl;
+		}
+	else
+		std::cout << "Form : " << tmp.getName() << " is already signed" << std::endl;
 }
