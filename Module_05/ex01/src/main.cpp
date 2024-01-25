@@ -6,18 +6,20 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 18:43:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:13:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Colors_ft.hpp"
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include "libft_p.hpp"
 
 int main(void)
 {
 	{
-		std::cout << "\t\t" << MAIN << "[ Exception ]" << RESET << std::endl;
+		printStringInCenter("[ Exception ]");
+
 		try
 		{
 			Form One("Example Form", -12, 11);
@@ -36,7 +38,8 @@ int main(void)
 		}
 	}
 	{
-		std::cout << "\n\t\t" << MAIN << "[ Signed Form OK ]" << RESET << std::endl;
+		printStringInCenter("[ Signed Form OK ]");
+
 		try
 		{
 			Form form("Model 130", 10, 10);
@@ -55,7 +58,8 @@ int main(void)
 		}
 	}
 	{
-		std::cout << "\n\t\t" << MAIN << "[ Signed Form Error ]" << RESET << std::endl;
+		printStringInCenter("[ Signed Form Error ]");
+
 		try
 		{
 			Form form("Model 130", 10, 10);
@@ -71,7 +75,7 @@ int main(void)
 		}
 	}
 	{
-		std::cout << "\n\t\t" << MAIN << "[ Operator = ]" << RESET << std::endl;
+		printStringInCenter("[ Operator = ]");
 
 		try
 		{

@@ -6,17 +6,18 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/23 16:34:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:09:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Colors_ft.hpp"
+#include "libft_p.hpp"
 
 int main(void)
 {
 	{
-		std::cout << "\t\t" << MAIN << "[ Exception ]" << RESET << std::endl;
+		printStringInCenter("[ Exception ]");
 		try
 		{
 			Bureaucrat one("Goku", -12);
@@ -35,7 +36,7 @@ int main(void)
 		}
 	}
 	{
-		std::cout << "\n\t\t" << MAIN << "[ Mandatory ]" << RESET << std::endl;
+		printStringInCenter("[ Mandatory ]");
 		try
 		{
 			Bureaucrat One("Bulma", 12);
@@ -51,7 +52,7 @@ int main(void)
 		}
 	}
 	{
-		std::cout << "\n\t\t" << MAIN << "[ Operator = ]" << RESET << std::endl;
+		printStringInCenter("[ Operator = ]");
 		Bureaucrat one("Goku", 12);
 		Bureaucrat two;
 

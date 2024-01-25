@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/01/25 11:10:37 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/01/25 11:35:08 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ MAKEFLAGS += --silent	# Silence makefile [Commented by default]\n
 
 # ═══ NAMES ═══════════════════════════════════════════════════════════════════#
 
-NAME	=	Mommy,_when_I_grow_up,_I_want_to_be_a_bureaucrat
+NAME	=	NO,_YOU_NEED_FORM_28B,_NOT_28C...
+
 
 # ═══ COMPILATE ═══════════════════════════════════════════════════════════════#
 
