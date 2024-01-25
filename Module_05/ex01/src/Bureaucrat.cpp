@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 18:25:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:00:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ void Bureaucrat::signForm(Form &tmp)
 			std::cout << this->getName() << " couldn’t sign " << tmp.getName() << " because " << e.what() << std::endl;
 		}
 	else
-		std::cout << "Form : " << tmp.getName() << " is already signed" << std::endl;
+		throw tmp.e_signed;
 }

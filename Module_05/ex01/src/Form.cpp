@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 18:37:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:00:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ std::ostream &operator<<(std::ostream &out, const Form &tmp)
 const char *Form::GradeTooHighException::what() const throw() { return ERROR "[ Exception ] Grade too high" RESET; }
 
 const char *Form::GradeTooLowException::what() const throw() { return ERROR "[ Exception ] Grade too low" RESET; }
+
+const char *Form::IsSignedExeption::what() const throw() { return ERROR "[ Exception ] is already signed" RESET; }
 
 void Form::beSigned(Bureaucrat &tmp)
 {

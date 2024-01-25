@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:59:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ public:
 	public:
 		virtual const char *what() const throw();
 	} e_low;
+
+	class IsSignedExeption : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	} e_signed;
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &tmp);
