@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 11:36:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:39:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void Bureaucrat::down(int num)
 	this->_grade -= num;
 }
 
-void Bureaucrat::signForm(Form &tmp)
+void Bureaucrat::signForm(AForm &tmp)
 {
 	if (tmp.getSigned() == "false")
 		try
@@ -88,10 +88,10 @@ void Bureaucrat::signForm(Form &tmp)
 			tmp.beSigned(*this);
 			std::cout << this->getName() << " signs " << tmp.getName() << std::endl;
 		}
-		catch (Form::GradeTooLowException &e)
+		catch (AForm::GradeTooLowException &e)
 		{
 			std::cout << this->getName() << " couldn’t sign " << tmp.getName() << " because " << e.what() << std::endl;
 		}
 	else
-		std::cout << "Form : " << tmp.getName() << " is already signed" << std::endl;
+		throw tmp.e_signed;
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 14:00:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:34:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ std::ostream &operator<<(std::ostream &out, const Form &tmp)
 	out << "Grade to siged: " << tmp.getGradeSig() << "\n";
 	out << "Grade to execute: " << tmp.getGradeExe() << "\n";
 	out << "Signed: " << tmp.getSigned() << "\n";
-	out << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄";
+	out << "▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂";
 
 	return out;
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 11:36:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:15:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-void Form::checkGrade(int grade, int exe) const
+void AForm::checkGrade(int grade, int exe) const
 {
 	if (grade < 1 || exe < 1)
 		throw e_low;
@@ -22,21 +22,21 @@ void Form::checkGrade(int grade, int exe) const
 		throw e_high;
 }
 
-Form::Form() : _name(""), _gradeSig(0), _gradeExe(0), _isSigned(false) {}
+AForm::AForm() : _name(""), _gradeSig(0), _gradeExe(0), _isSigned(false) {}
 
-Form::Form(const std::string name, int grade, int exe) : _name(name), _gradeSig(grade), _gradeExe(exe), _isSigned(false)
+AForm::AForm(const std::string name, int grade, int exe) : _name(name), _gradeSig(grade), _gradeExe(exe), _isSigned(false)
 {
-	std::cout << BURO << "[Form]" << GREEN << " - Constructor" << RESET << std::endl;
+	std::cout << BURO << "[AForm]" << GREEN << " - Constructor" << RESET << std::endl;
 	checkGrade(grade, exe);
 }
 
-Form::Form(const Form &tmp) : _name(tmp._name), _gradeSig(tmp._gradeSig), _gradeExe(tmp._gradeExe), _isSigned(tmp._isSigned) {}
+AForm::AForm(const AForm &tmp) : _name(tmp._name), _gradeSig(tmp._gradeSig), _gradeExe(tmp._gradeExe), _isSigned(tmp._isSigned) {}
 
-Form::~Form() { std::cout << BURO << "[Form]" << RED << " - Destructor" << RESET << std::endl; }
+AForm::~AForm() { std::cout << BURO << "[AForm]" << RED << " - Destructor" << RESET << std::endl; }
 
-Form &Form::operator=(const Form &tmp)
+AForm &AForm::operator=(const AForm &tmp)
 {
-	std::cout << BURO << "[Form]" << YELLOW << " - Assignation operator" << RESET << std::endl;
+	std::cout << BURO << "[AForm]" << YELLOW << " - Assignation operator" << RESET << std::endl;
 
 	if (this != &tmp)
 	{
@@ -48,9 +48,9 @@ Form &Form::operator=(const Form &tmp)
 	return *this;
 }
 
-std::string Form::getName() const { return this->_name; }
+std::string AForm::getName() const { return this->_name; }
 
-std::string Form::getSigned() const
+std::string AForm::getSigned() const
 {
 	if (this->_isSigned)
 		return "true";
@@ -58,29 +58,41 @@ std::string Form::getSigned() const
 		return "false";
 }
 
-int Form::getGradeSig() const { return this->_gradeSig; }
-int Form::getGradeExe() const { return this->_gradeExe; }
+int AForm::getGradeSig() const { return this->_gradeSig; }
+int AForm::getGradeExe() const { return this->_gradeExe; }
 
-std::ostream &operator<<(std::ostream &out, const Form &tmp)
+std::ostream &operator<<(std::ostream &out, const AForm &tmp)
 {
-	out << "    [ Info Form ]" << std::endl;
+	out << "    [ Info AForm ]" << std::endl;
 	out << "Name: " << tmp.getName() << "\n";
 	out << "Grade to siged: " << tmp.getGradeSig() << "\n";
 	out << "Grade to execute: " << tmp.getGradeExe() << "\n";
 	out << "Signed: " << tmp.getSigned() << "\n";
-	out << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄";
+	out << "▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂";
 
 	return out;
 }
 
-const char *Form::GradeTooHighException::what() const throw() { return ERROR "[ Exception ] Grade too high" RESET; }
+const char *AForm::GradeTooHighException::what() const throw() { return ERROR "[ Exception ] Grade too high" RESET; }
 
-const char *Form::GradeTooLowException::what() const throw() { return ERROR "[ Exception ] Grade too low" RESET; }
+const char *AForm::GradeTooLowException::what() const throw() { return ERROR "[ Exception ] Grade too low" RESET; }
 
-void Form::beSigned(Bureaucrat &tmp)
+const char *AForm::IsSignedExeption::what() const throw() { return ERROR "[ Exception ] is already signed" RESET; }
+
+const char *AForm::NotSignedExeption::what() const throw() { return ERROR "[ Exception ] Form not signed" RESET; }
+
+void AForm::beSigned(Bureaucrat &tmp)
 {
 	if (tmp.getGrade() <= this->_gradeSig)
 		this->_isSigned = true;
 	else
 		throw e_low;
+}
+
+void AForm::execute(const Bureaucrat &bure) const
+{
+	if (bure.getGrade() > this->_gradeExe)
+		throw e_low;
+	if (this->getSigned() == "false")
+		throw e_Nsigned;
 }

@@ -26,7 +26,7 @@
 #define ENDB "\x1B[46m\x1B[1;97m"
 
 #define BURO "\x1B[45m\x1B[97m"
-#define CAT_C "\x1B[43m\x1B[90m"
+#define PRE "\x1B[43m\x1B[90m"
 #define DOG_C "\x1B[44m\x1B[97m"
 #define DIAM "\x1B[30m\x1B[46m"
 

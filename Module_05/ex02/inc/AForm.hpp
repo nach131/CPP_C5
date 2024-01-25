@@ -6,18 +6,18 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 12:41:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:11:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "iostream"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
 	const std::string _name;
@@ -25,19 +25,21 @@ private:
 	const int _gradeExe;
 	bool _isSigned;
 	void checkGrade(int grade, int exe) const;
-	Form();
+	AForm();
 
 public:
-	Form(const std::string, int, int);
-	Form(const Form &);
-	~Form();
-	Form &operator=(const Form &);
+	AForm(const std::string, int, int);
+	AForm(const AForm &);
+	~AForm();
+	AForm &operator=(const AForm &);
 
 	std::string getName() const;
 	std::string getSigned() const;
 	int getGradeSig() const;
 	int getGradeExe() const;
 	void beSigned(Bureaucrat &);
+
+	virtual void execute(Bureaucrat const &) const;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -50,8 +52,20 @@ public:
 	public:
 		virtual const char *what() const throw();
 	} e_low;
+
+	class IsSignedExeption : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	} e_signed;
+
+	class NotSignedExeption : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	} e_Nsigned;
 };
 
-std::ostream &operator<<(std::ostream &out, const Form &tmp);
+std::ostream &operator<<(std::ostream &out, const AForm &tmp);
 
 #endif

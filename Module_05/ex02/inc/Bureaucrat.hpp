@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/24 17:11:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:41:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "iostream"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -35,7 +35,7 @@ public:
 	int getGrade() const;
 	void up(int);
 	void down(int);
-	void signForm(Form &);
+	void signForm(AForm &);
 
 	class GradeTooHighException : public std::exception
 	{
