@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/01/23 16:48:17 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/01/25 20:45:54 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MAKEFLAGS += --silent	# Silence makefile [Commented by default]\n
 
 # ═══ NAMES ═══════════════════════════════════════════════════════════════════#
 
-NAME	=	Form_up,_maggots
+NAME	=	NO,_YOU_NEED_FORM_28B,_NOT_28C...
 
 
 # ═══ COMPILATE ═══════════════════════════════════════════════════════════════#

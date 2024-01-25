@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 19:15:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/25 21:23:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ AForm::AForm(const std::string name, int grade, int exe) : _name(name), _gradeSi
 	checkGrade(grade, exe);
 }
 
-AForm::AForm(const AForm &tmp) : _name(tmp._name), _gradeSig(tmp._gradeSig), _gradeExe(tmp._gradeExe), _isSigned(tmp._isSigned) {}
+AForm::AForm(const AForm &tmp) : _name(tmp._name), _gradeSig(tmp._gradeSig), _gradeExe(tmp._gradeExe), _isSigned(tmp._isSigned)
+{
+	std::cout << BURO << "[AForm]" << CYAN << " - Copy constructor" << RESET << std::endl;
+}
 
 AForm::~AForm() { std::cout << BURO << "[AForm]" << RED << " - Destructor" << RESET << std::endl; }
 
