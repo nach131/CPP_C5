@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:10:04 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 17:39:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/26 10:09:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,17 @@ void Bureaucrat::signForm(AForm &tmp)
 		}
 	else
 		throw tmp.e_signed;
+}
+void Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->_name << " could not execute " << form.getName() << std::endl;
+		std::cout << e.what() << std::endl;
+	}
 }

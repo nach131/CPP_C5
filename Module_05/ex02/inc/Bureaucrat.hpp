@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 17:41:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/26 09:48:49 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ public:
 	void up(int);
 	void down(int);
 	void signForm(AForm &);
+	void executeForm(AForm const &form);
 
 	class GradeTooHighException : public std::exception
 	{

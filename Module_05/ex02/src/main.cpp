@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 21:56:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/26 10:10:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,27 @@ int main(void)
 	// 		std::cerr << e.what() << std::endl;
 	// 	}
 	// }
-	printStringInCenter("[ OK Tree]");
+	// printStringInCenter("[ Tree]");
+	// {
+	// 	try
+	// 	{
+	// 		Bureaucrat a("Salicaceas", 1);
+	// 		ShrubberyCreationForm Tree("Tree");
+	// 		Tree.beSigned(a);
+	// 		Tree.execute(a);
+	// 	}
+	// 	catch (std::exception &e)
+	// 	{
+	// 		std::cerr << e.what() << std::endl;
+	// 	}
+	// }
+	printStringInCenter("[ Execute whit Bureaucrat ]");
 	{
-		try
-		{
-			Bureaucrat a("Salicaceas", 1);
-			ShrubberyCreationForm Tree("Tree");
-			Tree.beSigned(a);
-			Tree.execute(a);
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		Bureaucrat a("Vegetta", 1); // Subir par no cumplir
+		PresidentialPardonForm Pre("Presidential");
+		Pre.beSigned(a); // para no cumplir
+		a.executeForm(Pre);
+		std::cout << Pre << std::endl;
 	}
 	// printStringInCenter("[ Constructor Copy ]");
 	// {
