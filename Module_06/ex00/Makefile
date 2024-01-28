@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/01/26 20:28:34 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/01/28 19:37:07 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME	=	CONVERSION_OF_SCALAR_TYPES
 
 # ═══ COMPILATE ═══════════════════════════════════════════════════════════════#
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic-errors 
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic-errors -g3
 # FSANIT	= -fsanitize=address
 CC		= c++
 INC		= -I inc
@@ -39,7 +39,7 @@ $(OBJS_D)/%.o:src/%.cpp
 			$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 $(NAME):	$(OBJ)
-			@printf "$(CYAN)Compiling $(MAGENTA)$(NAME)...$(RESET)\n"
+			@printf "$(CYAN)Compiling $(MAGENTA)$(NAME)$(RESET)\n"
 			$(CC) $(CFLAGS) $(FSANIT) $(OBJ) -o $(NAME)
 			@printf "$(DONE)DONE$(RESET)\n"
 
@@ -49,9 +49,21 @@ test:		re
 			@clear
 			@printf "$(CYAN)Testing $(MAGENTA)$(NAME)$(RESET)\n"
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
-			@./$(NAME) "42", "[ CONVERSION 42 ]" 
-			@./$(NAME) "42.0f", "[ CONVERSION 42 FLOAT ]" 
-			@./$(NAME) "42.0", "[ CONVERSION 42 DOUBLE ]" 
+			@./$(NAME) "-inf"
+			@./$(NAME) "+inf"
+			@./$(NAME) "nan"
+			@./$(NAME) "000000"
+			@./$(NAME) "Error conversion"
+			@./$(NAME) "42 Barcelona"
+			@./$(NAME) "500"
+			@./$(NAME) "-500"
+			@./$(NAME) "42"
+			@./$(NAME) "42"
+			@./$(NAME) "42.42f"
+			@./$(NAME) "-42.42f"
+			@./$(NAME) "42.42424242"
+			@./$(NAME) "-42.42424242"
+			@./$(NAME) "64.42424242"
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test...$(RESET)\n\n"
 			@$(MAKE) show
