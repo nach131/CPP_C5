@@ -35,7 +35,7 @@ int main()
 		std::cout << "min: " << my::min(a, b) << std::endl;
 		std::cout << "max: " << my::max(a, b) << std::endl;
 	}
-	printStringInCenter("[  int ]");
+	printStringInCenter("[ int ]");
 	{
 		float a = 42;
 		float b = 12;
