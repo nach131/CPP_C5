@@ -51,7 +51,7 @@ int main()
 		std::cout << "min: " << my::min(a, b) << std::endl;
 		std::cout << "max: " << my::max(a, b) << std::endl;
 	}
-	printStringInCenter("[  string ]");
+	printStringInCenter("[ string ]");
 	{
 		std::string a = "42 Barcelona";
 		std::string b = "22 Paris";
@@ -66,6 +66,21 @@ int main()
 
 		std::cout << "min: " << my::min(a, b) << std::endl;
 		std::cout << "max: " << my::max(a, b) << std::endl;
+	}
+	printStringInCenter("[ subject ]");
+	{
+		int a = 2;
+		int b = 3;
+		my::swap(a, b);
+		std::cout << "a = " << a << ", b = " << b << std::endl;
+		std::cout << "min( a, b ) = " << my::min(a, b) << std::endl;
+		std::cout << "max( a, b ) = " << my::max(a, b) << std::endl;
+		std::string c = "chaine1";
+		std::string d = "chaine2";
+		my::swap(c, d);
+		std::cout << "c = " << c << ", d = " << d << std::endl;
+		std::cout << "min( c, d ) = " << my::min(c, d) << std::endl;
+		std::cout << "max( c, d ) = " << my::max(c, d) << std::endl;
 	}
 
 	return 0;
