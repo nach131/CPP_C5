@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:09:12 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/29 15:46:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:30:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,20 @@ Base *Base::generate(void)
 
 void Base::identify(Base *p)
 {
-	std::cout << GREEN << "ptr: " << p << RESET << std::endl;
+	if (dynamic_cast<A *>(p) != 0)
+		std::cout << GREEN << "ptr: " << p << " is class A" << RESET << std::endl;
+	else if (dynamic_cast<B *>(p) != 0)
+		std::cout << GREEN << "ptr: " << p << " is class B" << RESET << std::endl;
+	else
+		std::cout << GREEN << "ptr: " << p << " is class C" << RESET << std::endl;
 }
 
 void Base::identify(Base &p)
 {
-	std::cout << YELLOW << "ref: " << &p << RESET << std::endl;
+	if (dynamic_cast<A *>(&p) != 0)
+		std::cout << YELLOW << "ptr: " << &p << " is class A" << RESET << std::endl;
+	else if (dynamic_cast<B *>(&p) != 0)
+		std::cout << YELLOW << "ptr: " << &p << " is class B" << RESET << std::endl;
+	else
+		std::cout << YELLOW << "ptr: " << &p << " is class C" << RESET << std::endl;
 }

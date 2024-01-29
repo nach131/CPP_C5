@@ -31,6 +31,8 @@ int main(void)
 		Base *Son3 = One.generate();
 
 		One.identify(Son1);
+		One.identify(Son2);
+		One.identify(Son3);
 
 		delete Son1;
 		delete Son2;
@@ -42,8 +44,12 @@ int main(void)
 		Base One;
 
 		A a;
+		B b;
+		C c;
 
 		One.identify(a);
+		One.identify(b);
+		One.identify(c);
 	}
 
 	return 0;
