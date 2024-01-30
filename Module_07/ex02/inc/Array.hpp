@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:49:02 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/30 17:29:49 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:04:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ private:
 public:
 	Array();
 	Array(size_t);
-	// Array(const Array &);
-	// Array<T> &operator=(const Array &);
-	Array(const T arr[], size_t size);
+	Array(const Array &);
+	Array<T> &operator=(const Array &);
 	T &operator[](size_t);
 	// T &front() const;
 	// T &back() const;
 	~Array();
-
+	void copy(const T *source, T *destination, size_t size);
 	size_t size();
 	bool empty();
 	void clear();
@@ -51,6 +50,13 @@ Array<T>::Array() : _items(nullptr), _size(0)
 }
 
 template <typename T>
+Array<T>::Array(const Array &rhs)
+{
+	std::cout << PINK << "[ARRAY]" << CYAN << " - Copy constructor" << RESET << std::endl;
+	*this = rhs;
+}
+
+template <typename T>
 Array<T>::~Array()
 {
 	std::cout << PINK << "[ARRAY]" << RED << " - Destructor" << RESET << std::endl;
@@ -62,6 +68,20 @@ Array<T>::Array(size_t i) : _items(nullptr), _size(i)
 {
 	std::cout << PINK << "[ARRAY]" << GREEN << " - Constructor with numer items" << RESET << std::endl;
 	_items = new T[i]();
+}
+
+template <typename T>
+Array<T> &Array<T>::operator=(const Array &tmp)
+{
+	std::cout << PINK << "[ARRAY]" << YELLOW << " - Assignation operator" << RESET << std::endl;
+	if (this != &tmp)
+	{
+		delete[] _items;
+		_size = tmp._size;
+		_items = new T[_size];
+		std::copy(tmp._items, tmp._items + _size, _items);
+	}
+	return *this;
 }
 
 template <typename T>

@@ -18,10 +18,6 @@
 
 int main()
 {
-	// {
-	// 	Array<int> integer;
-	// 	integer[0] = new
-	// }
 	printStringInCenter("[ Int ]");
 	{
 		Array<int> toma(10);
@@ -64,7 +60,7 @@ int main()
 		std::cout << "Empty: " << One.empty() << std::endl;
 		std::cout << "Empty: " << Two.empty() << std::endl;
 	}
-	printStringInCenter("[ Array Empty]");
+	printStringInCenter("[ Array Clear & Empty]");
 	{
 		Array<std::string> str(3);
 		str[0] = "42 Barcelona";
@@ -75,21 +71,35 @@ int main()
 		str.clear();
 		std::cout << "After clear empty: " << str.empty() << std::endl;
 	}
-	// printStringInCenter("[ Array int asignacion]");
+	printStringInCenter("[ Array String Operator=]");
+	{
+		Array<std::string> strA(3);
+		Array<std::string> strB;
+
+		strA[0] = "42 Barcelona";
+		strA[1] = "42 Paris";
+		strA[2] = "42 Madrid";
+
+		strB = strA;
+
+		for (size_t i = 0; i < strB.size(); i++)
+			std::cout << strB[i] << std::endl;
+		strA.clear();
+		std::cout << "strA is empty: " << strA.empty() << std::endl;
+	}
+	// printStringInCenter("[ Array Front]");
 	// {
+	// 	Array<std::string> strA(3);
 
-	// Array<int> One[] = {32, 43, 32};
+	// 	strA[0] = "42 Barcelona";
+	// 	strA[1] = "42 Paris";
+	// 	strA[2] = "42 Madrid";
 
-	// Array<int> One[] = {Array<int>(32), Array<int>(43), Array<int>(32)};
-	// std::cout << One->size() << std::endl;
+	// 	Array<std::string> strB(strA);
 
-	// for (size_t i = 0; i < One->size(); i++)
-	// {
-	// 	for (size_t j = 0; j < One[i].size(); j++)
-	// 	{
-	// 		std::cout << One[i][j] << ", ";
-	// 	}
+	// 	for (size_t i = 0; i < strB.size(); i++)
+	// 		std::cout << strB[i] << std::endl;
 	// }
-	// }
+
 	return 0;
 }
