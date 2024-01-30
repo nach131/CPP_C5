@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:49:02 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/30 23:04:45 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:27:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ public:
 	Array(const Array &);
 	Array<T> &operator=(const Array &);
 	T &operator[](size_t);
-	// T &front() const;
-	// T &back() const;
 	~Array();
 	void copy(const T *source, T *destination, size_t size);
 	size_t size();
@@ -94,18 +92,6 @@ T &Array<T>::operator[](size_t i)
 		throw e_out;
 	return _items[i];
 }
-
-// BONUS
-
-// template <typename T>
-// Array<T>::Array(const T arr[], size_t size) : _items(new T[size]), _size(size)
-// {
-// 	std::cout << PINK << "[ARRAY]" << GREEN << " - Constructor with array" << RESET << std::endl;
-// 	for (size_t i = 0; i < size; ++i)
-// 	{
-// 		_items[i] = arr[i];
-// 	}
-// }
 
 template <typename T>
 bool Array<T>::empty() { return this->_size == 0; }
