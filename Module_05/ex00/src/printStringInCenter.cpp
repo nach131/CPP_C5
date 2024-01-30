@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:19:15 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 11:09:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:42:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void printStringInCenter(const std::string &str)
 {
 	int terminalWidth = getTerminalWidth();
 
-	std::cout << terminalWidth << std::endl;
 	// Calcular la posición para imprimir en el centro
 	int padding = (terminalWidth - str.length()) / 2;
 
