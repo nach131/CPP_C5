@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/30 16:36:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:39:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int main(void)
 			{
 				std::cout << "Formulario 'presidential' creado correctamente." << std::endl;
 				std::cout << *form2 << std::endl;
+				delete form2;
 			}
 		}
 		catch (std::exception &e)
