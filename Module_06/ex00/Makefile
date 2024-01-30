@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/01/28 20:06:34 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/01/30 17:22:58 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,20 @@ leaks:		re
 			@clear
 			@printf "$(CYAN)Testing with Leaks...? $(MAGENTA)$(NAME)$(RESET)\n"
 			@printf "$(YELLOW)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
-			@leaks -atExit -- ./$(NAME)
+			@leaks -atExit -- ./$(NAME) "-inf"
+			@leaks -atExit -- ./$(NAME) "+inf"
+			@leaks -atExit -- ./$(NAME) "nan"
+			@leaks -atExit -- ./$(NAME) "000000"
+			@leaks -atExit -- ./$(NAME) "Error conversion"
+			@leaks -atExit -- ./$(NAME) "42 Barcelona"
+			@leaks -atExit -- ./$(NAME) "500"
+			@leaks -atExit -- ./$(NAME) "-500"
+			@leaks -atExit -- ./$(NAME) "42"
+			@leaks -atExit -- ./$(NAME) "42.42f"
+			@leaks -atExit -- ./$(NAME) "-42.42f"
+			@leaks -atExit -- ./$(NAME) "42.42424242"
+			@leaks -atExit -- ./$(NAME) "-42.42424242"
+			@leaks -atExit -- ./$(NAME) "64.42424242"
 			@printf "$(YELLOW)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test with Leaks...?$(RESET)\n\n"
 			@$(MAKE) fclean
