@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:07:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/25 19:11:33 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:32:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ private:
 public:
 	AForm(const std::string, int, int);
 	AForm(const AForm &);
-	~AForm();
+	virtual ~AForm();
 	AForm &operator=(const AForm &);
 
 	std::string getName() const;

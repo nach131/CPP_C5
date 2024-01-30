@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/26 14:09:14 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:36:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 
 int main(void)
 {
-	Intern One;
 	Bureaucrat Bure("Goku", 70);
-	printStringInCenter("[ Presidential OK]");
+	Intern One;
+
+	printStringInCenter("[ Presidential OK ]");
 	{
 		try
 		{
@@ -34,6 +35,7 @@ int main(void)
 			{
 				std::cout << "Form " << form1->getName() << " created" << std::endl;
 				std::cout << *form1 << std::endl;
+				delete form1;
 			}
 			else
 			{
@@ -45,7 +47,7 @@ int main(void)
 			std::cout << "No se pudo crear el formulario 'pres_One': " << e.what() << std::endl;
 		}
 	}
-	printStringInCenter("[ robotomy OK and signed can't exe]");
+	printStringInCenter("[ robotomy OK and signed can't exe ]");
 	{
 		try
 		{
@@ -56,6 +58,7 @@ int main(void)
 				std::cout << "Form " << form1->getName() << " created" << std::endl;
 				Bure.signForm(*form1);
 				Bure.executeForm(*form1);
+				delete form1;
 			}
 			else
 			{
@@ -67,7 +70,7 @@ int main(void)
 			std::cout << "No se pudo crear el formulario 'Robot_One': " << e.what() << std::endl;
 		}
 	}
-	printStringInCenter("[ Shrubbery signed exe OK]");
+	printStringInCenter("[ Shrubbery signed exe OK ]");
 	{
 		try
 		{
@@ -78,6 +81,7 @@ int main(void)
 				std::cout << "Form " << form1->getName() << " created" << std::endl;
 				Bure.signForm(*form1);
 				Bure.executeForm(*form1);
+				delete form1;
 			}
 			else
 			{
@@ -89,7 +93,7 @@ int main(void)
 			std::cout << "No se pudo crear el formulario 'shrubbery': " << e.what() << std::endl;
 		}
 	}
-	printStringInCenter("[ tomate error]");
+	printStringInCenter("[ tomate error ]");
 	{
 		try
 		{
