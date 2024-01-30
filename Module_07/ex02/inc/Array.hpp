@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:49:02 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/30 14:03:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:29:49 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ public:
 	// Array<T> &operator=(const Array &);
 	Array(const T arr[], size_t size);
 	T &operator[](size_t);
-	T &front() const;
-	T &back() const;
+	// T &front() const;
+	// T &back() const;
 	~Array();
 
 	size_t size();
@@ -110,3 +110,8 @@ void Array<T>::clear()
 //     Este método devuelve una referencia al último elemento del array.
 
 // Método begin() y end() para iteración (T *begin(), T *end(), const T *begin() const, const T *end() const):
+
+// arr.push(...items) – agrega ítems al final,
+// arr.pop() – extrae un ítem del final,
+// arr.shift() – extrae un ítem del inicio,
+// arr.unshift(...items) – agrega ítems al principio.
