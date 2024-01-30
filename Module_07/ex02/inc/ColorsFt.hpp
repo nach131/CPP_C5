@@ -1,5 +1,5 @@
-#ifndef COLORS_FT_HPP
-#define COLORS_FT_HPP
+#ifndef COLORSFT_HPP
+#define COLORSFT_HPP
 
 #define RESET "\x1B[0m"
 
