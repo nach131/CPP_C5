@@ -52,7 +52,7 @@ int main()
 			std::cerr << e.what() << '\n';
 		}
 	}
-	printStringInCenter("[ Array Empty]");
+	printStringInCenter("[ Array Empty ]");
 	{
 		Array<std::string> One;
 		Array<int> Two(4);
@@ -60,7 +60,7 @@ int main()
 		std::cout << "Empty: " << One.empty() << std::endl;
 		std::cout << "Empty: " << Two.empty() << std::endl;
 	}
-	printStringInCenter("[ Array Clear & Empty]");
+	printStringInCenter("[ Array Clear & Empty ]");
 	{
 		Array<std::string> str(3);
 		str[0] = "42 Barcelona";
@@ -71,7 +71,7 @@ int main()
 		str.clear();
 		std::cout << "After clear empty: " << str.empty() << std::endl;
 	}
-	printStringInCenter("[ Array String Operator=]");
+	printStringInCenter("[ Array String Operator= ]");
 	{
 		Array<std::string> strA(3);
 		Array<std::string> strB;
@@ -84,22 +84,36 @@ int main()
 
 		for (size_t i = 0; i < strB.size(); i++)
 			std::cout << strB[i] << std::endl;
+
 		strA.clear();
 		std::cout << "strA is empty: " << strA.empty() << std::endl;
 	}
-	// printStringInCenter("[ Array Front]");
-	// {
-	// 	Array<std::string> strA(3);
+	printStringInCenter("[ Array = int ]");
+	{
+		Array<int> toma(3);
 
-	// 	strA[0] = "42 Barcelona";
-	// 	strA[1] = "42 Paris";
-	// 	strA[2] = "42 Madrid";
+		toma[0] = 42;
+		toma[1] = 4242;
+		toma[2] = 424242;
 
-	// 	Array<std::string> strB(strA);
+		Array<int> strB(toma);
 
-	// 	for (size_t i = 0; i < strB.size(); i++)
-	// 		std::cout << strB[i] << std::endl;
-	// }
+		for (size_t i = 0; i < strB.size(); i++)
+			std::cout << strB[i] << std::endl;
+	}
+	printStringInCenter("[ Array = str ]");
+	{
+		Array<std::string> strA(3);
+
+		strA[0] = "42 Barcelona";
+		strA[1] = "42 Paris";
+		strA[2] = "42 Madrid";
+
+		Array<std::string> strB(strA);
+
+		for (size_t i = 0; i < strB.size(); i++)
+			std::cout << strB[i] << std::endl;
+	}
 
 	return 0;
 }

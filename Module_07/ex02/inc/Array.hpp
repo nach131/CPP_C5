@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:49:02 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/30 23:27:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:48:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ class Array
 private:
 	T *_items;
 	size_t _size;
+	void copyFrom(const Array &);
 
 public:
 	Array();
 	Array(size_t);
 	Array(const Array &);
-	Array<T> &operator=(const Array &);
+	Array &operator=(const Array &);
 	T &operator[](size_t);
 	~Array();
-	void copy(const T *source, T *destination, size_t size);
 	size_t size();
 	bool empty();
 	void clear();
@@ -48,10 +48,10 @@ Array<T>::Array() : _items(nullptr), _size(0)
 }
 
 template <typename T>
-Array<T>::Array(const Array &rhs)
+Array<T>::Array(const Array &tmp)
 {
 	std::cout << PINK << "[ARRAY]" << CYAN << " - Copy constructor" << RESET << std::endl;
-	*this = rhs;
+	copyFrom(tmp);
 }
 
 template <typename T>
@@ -62,10 +62,11 @@ Array<T>::~Array()
 }
 
 template <typename T>
-Array<T>::Array(size_t i) : _items(nullptr), _size(i)
+Array<T>::Array(size_t i)
 {
 	std::cout << PINK << "[ARRAY]" << GREEN << " - Constructor with numer items" << RESET << std::endl;
-	_items = new T[i]();
+	this->_items = new T[i];
+	this->_size = i;
 }
 
 template <typename T>
@@ -74,10 +75,11 @@ Array<T> &Array<T>::operator=(const Array &tmp)
 	std::cout << PINK << "[ARRAY]" << YELLOW << " - Assignation operator" << RESET << std::endl;
 	if (this != &tmp)
 	{
-		delete[] _items;
-		_size = tmp._size;
-		_items = new T[_size];
-		std::copy(tmp._items, tmp._items + _size, _items);
+		delete[] this->_items;
+		this->_size = tmp._size;
+		this->_items = new T[_size];
+		for (size_t i = 0; i < tmp._size; i++)
+			this->_items[i] = tmp._items[i];
 	}
 	return *this;
 }
@@ -90,7 +92,7 @@ T &Array<T>::operator[](size_t i)
 {
 	if (i >= _size)
 		throw e_out;
-	return _items[i];
+	return this->_items[i];
 }
 
 template <typename T>
@@ -102,6 +104,15 @@ void Array<T>::clear()
 	delete[] _items;
 	_items = nullptr;
 	_size = 0;
+}
+
+template <typename T>
+void Array<T>::copyFrom(const Array &tmp)
+{
+	this->_size = tmp._size;
+	this->_items = new T[_size];
+	for (size_t i = 0; i < tmp._size; i++)
+		this->_items[i] = tmp._items[i];
 }
 
 #endif
