@@ -70,20 +70,6 @@ int main()
 		}
 	}
 
-	printStringInCenter("[ 6, 3, 17, 9, 11 ]");
-
-	{
-		Span One = Span(5);
-		One.addNumber(5);
-		One.addNumber(3);
-		One.addNumber(17);
-		One.addNumber(9);
-		One.addNumber(11);
-		std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
-		std::cout << "Longest Span: " << One.longestSpan() << std::endl;
-		One.printSort();
-	}
-
 	printStringInCenter("[ Vector 20 Random with repeated num ? ]");
 	{
 		try
@@ -143,7 +129,7 @@ int main()
 		}
 	}
 
-	printStringInCenter("[ Assignation & Operator=]");
+	printStringInCenter("[ Assignation & Operator= ]");
 	{
 		try
 		{
@@ -154,6 +140,25 @@ int main()
 
 			Span Two(One);
 			Two.printValues();
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
+		}
+	}
+
+	printStringInCenter("[ Subject 6, 3, 17, 9, 11 ]");
+	{
+		try
+		{
+			Span sp = Span(5);
+			sp.addNumber(6);
+			sp.addNumber(3);
+			sp.addNumber(17);
+			sp.addNumber(9);
+			sp.addNumber(11);
+			std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
+			std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
 		}
 		catch (std::exception &e)
 		{
