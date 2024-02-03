@@ -135,7 +135,7 @@ int main()
 
 			std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
 			std::cout << "Longest Span: " << One.longestSpan() << std::endl;
-			// One.printValues();
+			// One.printSort();
 		}
 		catch (std::exception &e)
 		{
@@ -143,21 +143,23 @@ int main()
 		}
 	}
 
-	// printStringInCenter("[  ]");
-	// {
-	// 	try
-	// 	{
-	// 		Span One(10);
+	printStringInCenter("[ Assignation & Operator=]");
+	{
+		try
+		{
+			Span One(10);
 
-	// 		for (size_t i = 0; i < One.size; i++)
-	// 			One.addNumber(i * 1.4);
-	// 		std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
-	// 	}
-	// 	catch (std::exception &e)
-	// 	{
-	// 		std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-	// 	}
-	// }
+			for (size_t i = 0; i < One.getCapacity(); i++)
+				One.addNumber(getRandomNumber(0, 30));
+
+			Span Two(One);
+			Two.printValues();
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
+		}
+	}
 
 	return 0;
 }

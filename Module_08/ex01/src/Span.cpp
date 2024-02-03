@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 21:29:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/02 12:33:49 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:11:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,6 @@ Span::Span(const Span &tmp)
 	*this = tmp;
 }
 
-// int Span::shortestSpan() const
-// {
-// 	if (_numbers.size() <= 1)
-// 		throw std::logic_error("Not enough numbers to find Span");
-
-// 	std::vector<int> sortedNumbers = _numbers;
-// 	std::sort(sortedNumbers.begin(), sortedNumbers.end());
-
-// 	int minSpan = std::numeric_limits<int>::max();
-// 	for (size_t i = 1; i < sortedNumbers.size(); ++i)
-// 	{
-// 		int span = sortedNumbers[i] - sortedNumbers[i - 1];
-// 		minSpan = std::min(minSpan, span);
-// 	}
-
-// 	return minSpan;
-// }
-
 int Span::shortestSpan() const
 {
 	if (_numbers.size() <= 1)
@@ -58,7 +40,7 @@ int Span::shortestSpan() const
 	std::vector<int> sortedNumbers = _numbers;
 	std::sort(sortedNumbers.begin(), sortedNumbers.end());
 
-	int minSpan = std::numeric_limits<int>::max();
+	int minSpan = INT_MAX;
 	for (size_t i = 1; i < sortedNumbers.size(); ++i)
 		minSpan = std::min(minSpan, sortedNumbers[i] - sortedNumbers[i - 1]);
 
@@ -78,9 +60,7 @@ Span &Span::operator=(const Span &tmp)
 	std::cout << PINK << "[Span]" << YELLOW << " - Assignation operator" << RESET << std::endl;
 
 	if (this != &tmp)
-	{
-		;
-	}
+		this->_numbers = tmp._numbers;
 	return *this;
 }
 
