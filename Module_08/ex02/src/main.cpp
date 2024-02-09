@@ -13,157 +13,103 @@
 
 #include "ColorsFt.hpp"
 #include "libftPlus.hpp"
-#include "Span.hpp"
+#include <list>
+#include "MutantStack.hpp"
+
+template <typename T>
+void printM(MutantStack<T> &tmp)
+{
+	while (!tmp.empty())
+	{
+		std::cout << tmp.top() << " ";
+		tmp.pop();
+	}
+	std::cout << "\n______" << std::endl;
+}
 
 int main()
 {
-	// printStringInCenter("[ Exeption add more than capacity ]");
-	// {
-	// 	try
-	// 	{
-	// 		Span Two(1);
-	// 		Two.addNumber(12);
-	// 		Two.addNumber(112);
-	// 	}
-	// 	catch (std::exception &e)
-	// 	{
-	// 		std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-	// 	}
-	// }
-	printStringInCenter("[ Vector 0 Error: Shortest ]");
-	{
-		try
-		{
-			Span One(0);
-			std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
-	}
-	printStringInCenter("[ Vector 1 Error: Shortest ]");
-	{
-		try
-		{
-			Span One(1);
-			One.addNumber(4242);
-			std::cout << One.shortestSpan() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
-	}
 
-	printStringInCenter("[ Vector 1 Error: Longest ]");
+	printStringInCenter("[ Int ]");
 	{
-		try
+		MutantStack<int> myStack;
+		myStack.push(5);
+		myStack.push(17);
+		std::cout << myStack.top() << std::endl;
+		myStack.pop();
+		std::cout << myStack.size() << std::endl;
+		myStack.push(3);
+		myStack.push(75);
+
+		MutantStack<int> B(myStack);
+
+		printM(B);
+	}
+	printStringInCenter("[ Operator = ]");
+	{
+		MutantStack<int> myStack;
+		myStack.push(5);
+		myStack.push(17);
+		MutantStack<int> B(myStack);
+
+		printM(B);
+	}
+	printStringInCenter("[ Begin & End ]");
+	{
+		MutantStack<int> myStack;
+		myStack.push(5);
+		myStack.push(17);
+		myStack.push(42);
+		MutantStack<int>::iterator it = myStack.begin();
+		MutantStack<int>::iterator ite = myStack.end();
+
+		while (it != ite)
 		{
-			Span One(1);
-			One.addNumber(4242);
-			std::cout << One.longestSpan() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
+			std::cout << *it << std::endl;
+			++it;
 		}
 	}
 
-	printStringInCenter("[ Vector 20 Random with repeated num ? ]");
+	printStringInCenter("[ Subject ]");
 	{
-		try
+		MutantStack<int> mstack;
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << mstack.top() << std::endl;
+		mstack.pop();
+		std::cout << mstack.size() << std::endl;
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737); //[...] mstack.push(0);
+		MutantStack<int>::iterator it = mstack.begin();
+		MutantStack<int>::iterator ite = mstack.end();
+		++it;
+		--it;
+		while (it != ite)
 		{
-			Span One(20);
-			std::cout << "getSize: " << One.getSize() << std::endl;
-			std::cout << "getCapacity: " << One.getCapacity() << std::endl;
-			for (size_t i = 0; i < One.getCapacity(); i++)
-				One.addNumber(getRandomNumber(0, 200));
-
-			std::cout << "getSize After for: " << One.getSize() << std::endl;
-			std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
-			std::cout << "Longest Span: " << One.longestSpan() << std::endl;
-			One.printValues();
-			One.printSort();
+			std::cout << *it << std::endl;
+			++it;
 		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
+		std::stack<int> s(mstack);
 	}
-
-	printStringInCenter("[ Vector 100 +42]");
+	printStringInCenter("[ list ]");
 	{
-		try
-		{
-			Span One(100);
-			for (size_t i = 0; i < 100; i++)
-				One.addNumber(i * 1.33);
+		MutantStack<int> mstack;
+		mstack.push(5);
+		mstack.push(17);
+		std::cout << "Elementos en MutantStack: ";
+		for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
+			std::cout << *it << " ";
+		std::cout << std::endl;
 
-			std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
-			std::cout << "Longest Span: " << One.longestSpan() << std::endl;
-
-			One.printValues();
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
-	}
-
-	printStringInCenter("[ Vector 1000 Random]");
-	{
-		try
-		{
-			Span One(1000);
-			for (size_t i = 0; i < 1000; i++)
-				One.addNumber(getRandomNumber(INT_MIN, INT_MAX));
-
-			std::cout << "Shortest Span: " << One.shortestSpan() << std::endl;
-			std::cout << "Longest Span: " << One.longestSpan() << std::endl;
-			// One.printSort();
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
-	}
-
-	printStringInCenter("[ Assignation & Operator= ]");
-	{
-		try
-		{
-			Span One(10);
-
-			for (size_t i = 0; i < One.getCapacity(); i++)
-				One.addNumber(getRandomNumber(0, 30));
-
-			Span Two(One);
-			Two.printValues();
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
-	}
-
-	printStringInCenter("[ Subject 6, 3, 17, 9, 11 ]");
-	{
-		try
-		{
-			Span sp = Span(5);
-			sp.addNumber(6);
-			sp.addNumber(3);
-			sp.addNumber(17);
-			sp.addNumber(9);
-			sp.addNumber(11);
-			std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
-			std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << RED "[ Exception ] " << e.what() << RESET << std::endl;
-		}
+		// Usando std::list para comparación
+		std::list<int> l;
+		l.push_back(42);
+		l.push_back(84);
+		std::cout << "Elementos en std::list: ";
+		for (std::list<int>::iterator it = l.begin(); it != l.end(); ++it)
+			std::cout << *it << " ";
+		std::cout << std::endl;
 	}
 
 	return 0;
