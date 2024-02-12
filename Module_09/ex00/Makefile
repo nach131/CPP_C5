@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/02/09 17:12:31 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/02/09 17:56:09 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ test:		re
 			@clear
 			@printf "$(CYAN)Testing $(MAGENTA)$(NAME)$(RESET)\n"
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
-			@./$(NAME)
+			@./$(NAME) "input.txt"
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test...$(RESET)\n\n"
 			@$(MAKE) show
@@ -59,7 +59,7 @@ leaks:		re
 			@clear
 			@printf "$(CYAN)Testing with Leaks...? $(MAGENTA)$(NAME)$(RESET)\n"
 			@printf "$(YELLOW)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
-			@leaks -atExit -- ./$(NAME)
+			@leaks -atExit -- ./$(NAME) "input.txt"
 			@printf "$(YELLOW)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test with Leaks...?$(RESET)\n\n"
 			@$(MAKE) fclean

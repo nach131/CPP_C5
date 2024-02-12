@@ -13,80 +13,27 @@
 
 #include <iostream>
 #include "Colors_ft.hpp"
-#include "libft_p.hpp"
-#include "easyfind.hpp"
-#include <vector>
-#include <list>
-#include <map>
-#include <set>
+#include "BitcoinExchange.hpp"
 
-int main()
+int main(int n, char **str)
 {
 
-	int arr[] = {1, 2, 3, 4, 5};
-
-	printStringInCenter("[ Vector ]");
+	if (n != 2)
 	{
-		std::vector<int> numbers(arr, arr + sizeof(arr) / sizeof(arr[0]));
-
-		try
-		{
-			easyfind(numbers, 3);
-			easyfind(numbers, 5);
-			easyfind(numbers, 6);
-		}
-		catch (const std::string &ex)
-		{
-			std::cout << RED << "Exception: " << ex << RESET << std::endl;
-		}
+		std::cerr << ERROR << "Necessary movement file" << RESET << std::endl;
+		return EXIT_FAILURE;
 	}
-	printStringInCenter("[ List ]");
-	{
-		std::list<int> numbers(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
-		try
-		{
-			easyfind(numbers, 3);
-			easyfind(numbers, 5);
-			easyfind(numbers, 6);
-		}
-		catch (const std::string &ex)
-		{
-			std::cout << RED << "Exception: " << ex << RESET << std::endl;
-		}
-	}
-	printStringInCenter("[ Set ]");
-	{
-		std::set<int> numbers(arr, arr + sizeof(arr) / sizeof(arr[0]));
+	BitcoinExchange a;
 
-		try
-		{
-			easyfind(numbers, 3);
-			easyfind(numbers, 5);
-			easyfind(numbers, 6);
-		}
-		catch (const std::string &ex)
-		{
-			std::cout << RED << "Exception: " << ex << RESET << std::endl;
-		}
-	}
-	printStringInCenter("[ Map ]");
-	{
-		std::map<int, int> numbers;
+	a.change("2012-01-11", 1);
+	// BitcoinExchange b;
 
-		for (size_t i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i)
-			numbers[i + 1] = i;
+	// b = a;
 
-		try
-		{
-			easyfindMap(numbers, 3);
-			easyfindMap(numbers, 5);
-			easyfindMap(numbers, 6);
-		}
-		catch (const std::string &ex)
-		{
-			std::cout << RED << "Exception: " << ex << RESET << std::endl;
-		}
-	}
+	// b.print();
+	// a.print();
+	(void)str;
+
 	return 0;
 }
