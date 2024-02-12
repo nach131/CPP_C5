@@ -24,7 +24,7 @@ bool isValidDate(const std::string &dateString)
 	return !ss.fail();
 }
 
-bool ctrFile(std::string date, std::string value)
+bool isValidInput(const std::string &date, const std::string &value, float &floatValue)
 {
 	if (!isValidDate(date) || value.empty())
 	{
@@ -32,21 +32,20 @@ bool ctrFile(std::string date, std::string value)
 		return true;
 	}
 
-	return false;
-}
+	std::stringstream ss(value);
+	ss >> floatValue;
 
-bool ctrValue(float num)
-{
-	if (num <= 0)
+	if (floatValue <= 0)
 	{
 		std::cerr << ERROR << "Error: not a positive number." << RESET << std::endl;
 		return true;
 	}
-	else if (num >= INT_MAX)
+	else if (floatValue >= INT_MAX)
 	{
 		std::cerr << ERROR << "Error: too large a number." << RESET << std::endl;
 		return true;
 	}
+
 	return false;
 }
 
@@ -83,13 +82,8 @@ int main(int n, char **str)
 		std::getline(iss, date, '|');
 		std::getline(iss, value, '|');
 
-		flag = ctrFile(date, value);
-
-		std::stringstream ss(value);
 		float floatValue;
-		ss >> floatValue;
-
-		flag = ctrValue(floatValue);
+		flag = isValidInput(date, value, floatValue);
 
 		if (!flag)
 			exchange.change(date, floatValue);

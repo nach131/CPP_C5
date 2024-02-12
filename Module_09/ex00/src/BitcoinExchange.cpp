@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:57:43 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/12 22:25:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/12 23:28:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void BitcoinExchange::readCSV(const std::string &filename)
 
 void BitcoinExchange::pConvert(const std::string date, float value, float num)
 {
-	std::cout << date << " => " << num << " = " << std::fixed << std::setprecision(2) << value * num << std::endl;
+	std::cout << date << " => " << num << " = " << value * num << std::endl;
 }
 
 void BitcoinExchange::change(const std::string date, float num)
