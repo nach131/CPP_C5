@@ -14,26 +14,87 @@
 #include <iostream>
 #include "Colors_ft.hpp"
 #include "BitcoinExchange.hpp"
+#include <limits.h>
+
+bool isValidDate(const std::string &dateString)
+{
+	std::istringstream ss(dateString);
+	std::tm t = {};
+	ss >> std::get_time(&t, "%Y-%m-%d");
+	return !ss.fail();
+}
+
+bool ctrFile(std::string date, std::string value)
+{
+	if (!isValidDate(date) || value.empty())
+	{
+		std::cerr << ERROR << "Error: bad input => " << date << RESET << std::endl;
+		return true;
+	}
+
+	return false;
+}
+
+bool ctrValue(float num)
+{
+	if (num <= 0)
+	{
+		std::cerr << ERROR << "Error: not a positive number." << RESET << std::endl;
+		return true;
+	}
+	else if (num >= INT_MAX)
+	{
+		std::cerr << ERROR << "Error: too large a number." << RESET << std::endl;
+		return true;
+	}
+	return false;
+}
 
 int main(int n, char **str)
 {
 
 	if (n != 2)
 	{
-		std::cerr << ERROR << "Necessary movement file" << RESET << std::endl;
+		std::cerr << ERROR << "Error: could not open file." << RESET << std::endl;
 		return EXIT_FAILURE;
 	}
 
-	BitcoinExchange a;
+	std::ifstream file(str[1]);
+	if (!file)
+	{
+		std::cerr << ERROR << "Error opening file " << str[1] << RESET << std::endl;
+		exit(1);
+	}
 
-	a.change("2012-01-11", 1);
-	// BitcoinExchange b;
+	BitcoinExchange exchange;
+	std::string line;
+	bool flag;
+	bool isFirstLine = true;
 
-	// b = a;
+	while (std::getline(file, line))
+	{
+		if (isFirstLine)
+		{
+			isFirstLine = false;
+			continue;
+		}
+		std::istringstream iss(line);
+		std::string date, value;
+		std::getline(iss, date, '|');
+		std::getline(iss, value, '|');
 
-	// b.print();
-	// a.print();
-	(void)str;
+		flag = ctrFile(date, value);
 
-	return 0;
+		std::stringstream ss(value);
+		float floatValue;
+		ss >> floatValue;
+
+		flag = ctrValue(floatValue);
+
+		if (!flag)
+			exchange.change(date, floatValue);
+	}
+	file.close();
+
+	return EXIT_SUCCESS;
 }

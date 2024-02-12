@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:49:02 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/12 18:05:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:24:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
 #include "Colors_ft.hpp"
 
 class BitcoinExchange

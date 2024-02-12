@@ -6,13 +6,12 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:57:43 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/12 18:17:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/12 22:25:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <iostream>
-#include <cstdlib>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -64,7 +63,7 @@ void BitcoinExchange::change(const std::string date, float num)
 
 	(void)num;
 	if (it != _data.end())
-		pConvert(it->first, atof(it->second.c_str()), num);
+		pConvert(date, atof(it->second.c_str()), num);
 	else
 	{
 		// Buscar la fecha anterior más cercana
@@ -72,7 +71,7 @@ void BitcoinExchange::change(const std::string date, float num)
 		if (it != _data.begin())
 		{
 			--it;
-			pConvert(it->first, atof(it->second.c_str()), num);
+			pConvert(date, atof(it->second.c_str()), num);
 		}
 		else
 			std::cout << "Date not found and no earlier date found." << std::endl;
