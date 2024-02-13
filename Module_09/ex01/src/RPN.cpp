@@ -6,12 +6,11 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:52:56 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/13 18:18:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:26:34 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-#include <sstream>
 
 RPN::RPN() {}
 

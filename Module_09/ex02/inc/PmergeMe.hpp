@@ -1,35 +1,30 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/28 12:20:40 by nmota-bu         ###   ########.fr       */
+/*   Created: 2024/02/13 20:47:47 by nmota-bu          #+#    #+#             */
+/*   Updated: 2024/02/13 20:50:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Colors_ft.hpp"
-#include "libftP.hpp"
-#include "PmergeMe.hpp"
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
+
 #include <iostream>
 
-int main(int n, char **str)
+class PmergeMe
 {
-	try
-	{
-		if (n != 2)
-			throw std::runtime_error("Error: You must provide an positive integer sequence as argument.");
+private:
+	PmergeMe();
 
-		printStringInCenter(str[1]);
-		PmergeMe sort(str[1]);
-	}
-	catch (const std::exception &ex)
-	{
-		std::cerr << ERROR << ex.what() << RESET << std::endl;
-	}
+public:
+	PmergeMe(std::string);
+	PmergeMe(const PmergeMe &);
+	~PmergeMe();
+	PmergeMe &operator=(const PmergeMe &);
+};
 
-	return EXIT_SUCCESS;
-}
+#endif
