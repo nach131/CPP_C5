@@ -1,35 +1,32 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 22:22:20 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/01/28 12:20:40 by nmota-bu         ###   ########.fr       */
+/*   Created: 2024/02/13 17:50:58 by nmota-bu          #+#    #+#             */
+/*   Updated: 2024/02/13 18:13:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Colors_ft.hpp"
-#include "libftP.hpp"
-#include "RPN.hpp"
+#include <stack>
 #include <iostream>
+#include <sstream>
 
-int main(int n, char **str)
+class RPN
 {
-	try
-	{
-		if (n != 2)
-			throw std::runtime_error("Error: You must provide an operation in RPN notation as an argument.");
+private:
+    std::stack<int> _stack;
+    std::string _token;
+    RPN();
+    bool isValidToken(const std::string &token);
+    bool isOperator(const std::string &token);
 
-		printStringInCenter(str[1]);
-		RPN calc(str[1]);
-	}
-	catch (const std::exception &ex)
-	{
-		std::cerr << ERROR << ex.what() << RESET << std::endl;
-	}
-
-	return EXIT_SUCCESS;
-}
+public:
+    RPN(const std::string);
+    RPN(RPN const &other);
+    RPN &operator=(RPN const &other);
+    ~RPN();
+};
