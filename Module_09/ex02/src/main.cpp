@@ -22,9 +22,9 @@ int main(int n, char **str)
 	{
 		if (n != 2)
 			throw std::runtime_error("Error: You must provide an positive integer sequence as argument.");
-
 		printStringInCenter(str[1]);
 		PmergeMe sort(str[1]);
+		sort.print();
 	}
 	catch (const std::exception &ex)
 	{
@@ -33,3 +33,5 @@ int main(int n, char **str)
 
 	return EXIT_SUCCESS;
 }
+
+// ./PmergeMe "$(ruby -e "puts (1..100).to_a.shuffle.join(' ')")"

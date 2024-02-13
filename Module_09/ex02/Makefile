@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/02/13 20:53:27 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/02/13 22:55:31 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MAKEFLAGS += --silent	# Silence makefile [Commented by default]\n
 
 # ═══ NAMES ═══════════════════════════════════════════════════════════════════#
 
-NAME	=	RPN
+NAME	=	PmergeMe
 
 # ═══ COMPILATE ═══════════════════════════════════════════════════════════════#
 
@@ -51,8 +51,11 @@ test:		re
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
 			@./$(NAME) "7 73 4 23"
 			@./$(NAME) "8 9 9 4 1"
+			@./$(NAME) "$$(ruby -e 'puts (1..100).to_a.shuffle.join(" ")')"
+			@./$(NAME) "8 9 9.34 12.2 1"
+			@./$(NAME) "3 4 2147483648"
+			@./$(NAME) "–2147483648 23 2"
 			@./$(NAME) "(1 + 1)"
-			@./$(NAME) 
 			@./$(NAME) "string err"
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test...$(RESET)\n\n"
