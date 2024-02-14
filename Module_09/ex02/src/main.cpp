@@ -22,9 +22,10 @@ int main(int n, char **str)
 	{
 		if (n != 2)
 			throw std::runtime_error("Error: You must provide an positive integer sequence as argument.");
-		printStringInCenter(str[1]);
+		// printStringInCenter(str[1]);
+		printStringInCenter("");
 		PmergeMe sort(str[1]);
-		sort.print();
+		// sort.print();
 	}
 	catch (const std::exception &ex)
 	{
