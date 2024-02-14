@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:52:56 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/14 13:43:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:52:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ RPN &RPN::operator=(RPN const &other)
 }
 
 RPN::~RPN() {}
+
+bool RPN::isValidRPN(const std::string ori)
+{
+    std::istringstream iss(ori);
+
+    while (iss >> _token)
+    {
+    }
+}
 
 bool RPN::isValidToken(const std::string &token)
 {

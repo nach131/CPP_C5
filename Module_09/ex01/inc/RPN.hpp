@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:50:58 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/13 18:13:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:52:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ private:
     std::stack<int> _stack;
     std::string _token;
     RPN();
+    bool isValidRPN(const std::string);
     bool isValidToken(const std::string &token);
     bool isOperator(const std::string &token);
 
