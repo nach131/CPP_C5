@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:47:47 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/14 10:48:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:26:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,28 @@
 #include <vector>
 #include <list>
 #include <limits.h>
+#include <ctime>
+
+enum
+{
+	VEC,
+	LST
+};
 
 class PmergeMe
 {
 private:
 	bool _sorted;
+	std::string _ori;
 	std::vector<int> _vec;
 	// std::list<int> _lst;
 	std::string _token;
 	PmergeMe();
-	void start();
+	void startVec();
 	bool isValidToken(const std::string &token);
 	void print();
-	void sortVector();
+	double measureTimeMergeSort(int);
+	void addToContainer(int);
 
 public:
 	PmergeMe(std::string);
