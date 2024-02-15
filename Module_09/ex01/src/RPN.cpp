@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:52:56 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/15 10:33:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:34:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ RPN::RPN(const std::string &ori)
         std::istringstream iss(ori);
         while (iss >> _token)
         {
-            // if (isValidToken(_token))
-            // {
             if (isOperator(_token))
             {
                 int operand2 = _stack.top();
@@ -59,12 +57,6 @@ RPN::RPN(const std::string &ori)
             }
                 else
                     _stack.push(atoi(_token.c_str()));
-                // }
-                // else
-                // {
-                //     _stack = std::stack<int>();
-                //     throw std::runtime_error("Error: Invalid token.");
-                // }
         }
         std::cout << _stack.top() << std::endl;
     }
