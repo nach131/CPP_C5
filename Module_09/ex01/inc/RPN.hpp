@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:50:58 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/13 18:13:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:15:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ private:
     RPN();
     bool isValidToken(const std::string &token);
     bool isOperator(const std::string &token);
+    bool isValidRpn(const std::string &);
 
 public:
-    RPN(const std::string);
+    RPN(const std::string &);
     RPN(RPN const &other);
     RPN &operator=(RPN const &other);
     ~RPN();

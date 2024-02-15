@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:52:56 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/13 18:26:34 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:33:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,33 @@
 
 RPN::RPN() {}
 
-RPN::RPN(const std::string ori)
+bool RPN::isValidRpn(const std::string &ori)
 {
     std::istringstream iss(ori);
-    while (iss >> _token)
+
+    int num = 0;
+    int oper = 0;
+
+    std::string token;
+    while (iss >> token)
     {
-        if (isValidToken(_token))
+        if (isOperator(token))
+            oper++;
+        else if (isValidToken(token))
+            num++;
+    }
+    return (num - oper) == 1;
+}
+
+RPN::RPN(const std::string &ori)
+{
+    if (isValidRpn(ori))
+    {
+        std::istringstream iss(ori);
+        while (iss >> _token)
         {
+            // if (isValidToken(_token))
+            // {
             if (isOperator(_token))
             {
                 int operand2 = _stack.top();
@@ -37,15 +57,19 @@ RPN::RPN(const std::string ori)
                 else if (_token == "/")
                     _stack.push(operand1 / operand2);
             }
-            else
-                _stack.push(atoi(_token.c_str()));
+                else
+                    _stack.push(atoi(_token.c_str()));
+                // }
+                // else
+                // {
+                //     _stack = std::stack<int>();
+                //     throw std::runtime_error("Error: Invalid token.");
+                // }
         }
-        else
-        {
-            throw std::runtime_error("Error: Invalid token.");
-        }
+        std::cout << _stack.top() << std::endl;
     }
-    std::cout << _stack.top() << std::endl;
+    else
+        throw std::runtime_error("Erro: The argument is not valid RPN.");
 }
 
 RPN::RPN(RPN const &other) { *this = other; }
