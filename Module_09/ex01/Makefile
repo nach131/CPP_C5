@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/02/15 10:30:22 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/02/15 10:39:56 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,11 +53,13 @@ test:		re
 			@./$(NAME) "7 7 * 7 -"
 			@./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
 			@./$(NAME) "3 7 * 6 +"
+			@./$(NAME) "3 17 * 12 +"
 			@./$(NAME) "2 2 + 1 + 1 + 4 9 * +"
 			@./$(NAME) "1 + 1 1 1 1"
 			@./$(NAME) "(1 + 1)"
-			@./$(NAME) 
+			@./$(NAME) "1 * + -"
 			@./$(NAME) "string err"
+			@./$(NAME) 
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test...$(RESET)\n\n"
 			@$(MAKE) show

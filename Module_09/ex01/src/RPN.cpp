@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:52:56 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/15 10:34:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:38:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ RPN::RPN(const std::string &ori)
                 else if (_token == "/")
                     _stack.push(operand1 / operand2);
             }
-                else
-                    _stack.push(atoi(_token.c_str()));
+            else
+                _stack.push(atoi(_token.c_str()));
         }
         std::cout << _stack.top() << std::endl;
     }
