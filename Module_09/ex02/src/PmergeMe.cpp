@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 20:51:10 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/15 18:45:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:53:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ PmergeMe::~PmergeMe()
 	std::cout << "Time to process a range of " << _lst.size() << " elements with std::[..] : " << _timeLst << " us" << std::endl;
 }
 
-PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
+PmergeMe::PmergeMe(const PmergeMe &other)
+	: _timeVec(other._timeVec), _timeLst(other._timeLst), _ori(other._ori), _vec(other._vec), _lst(other._lst) {}
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
 	if (this != &other)
-		// this->_stack = other._stack;
-		// TODO
-		// std::copy(rhs._list.begin(), rhs._list.end(), std::back_inserter(this->_list));
-		;
-		return *this;
+	{
+		_lst = other._lst;
+		_vec = other._vec;
+	}
+	return *this;
 }
 
 bool PmergeMe::isValidToken(const std::string &token)
@@ -87,7 +88,7 @@ double PmergeMe::start(int type)
 		mergeSortList(_lst, _lst.begin(), _lst.end());
 
 	clock_t end = clock();
-	double duration = (double)(end - start) / CLOCKS_PER_SEC * 1000.0; // Convertir de segundos a milisegundos
+	double duration = (double)(end - start) / CLOCKS_PER_SEC * 1000.0;
 	return duration;
 }
 

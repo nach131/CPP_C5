@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/02/15 17:46:16 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/02/15 18:48:45 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,10 @@ test:		re
 			@./$(NAME) "7 73 4 23"
 			@./$(NAME) "8 9 9 4 1"
 			@./$(NAME) "$$(ruby -e 'puts (1..20).to_a.shuffle.join(" ")')"
+# @./$(NAME) "$$(ruby -e 'puts (1..100).to_a.shuffle.join(" ")')"
+# @./$(NAME) "$$(ruby -e 'puts (1..500).to_a.shuffle.join(" ")')"
+# @./$(NAME) "$$(ruby -e 'puts (1..1000).to_a.shuffle.join(" ")')"
+# @./$(NAME) "$$(ruby -e 'puts (1..3000).to_a.shuffle.join(" ")')"
 			@./$(NAME) "-1" "2"
 			@./$(NAME) "8 9 9.34 12.2 1"
 			@./$(NAME) "3 4 2147483648"
@@ -67,10 +71,9 @@ leaks:		re
 			@clear
 			@printf "$(CYAN)Testing with Leaks...? $(MAGENTA)$(NAME)$(RESET)\n"
 			@printf "$(YELLOW)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
-			@leaks -atExit -- ./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
-			@leaks -atExit -- ./$(NAME) "7 7 * 7 -"
-			@leaks -atExit -- ./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
-			@leaks -atExit -- ./$(NAME) "(1 + 1)"
+			@leaks -atExit -- ./$(NAME) "7 73 4 23"
+			@leaks -atExit -- ./$(NAME) "8 9 9 4 1"
+			@leaks -atExit -- ./$(NAME) "$$(ruby -e 'puts (1..20).to_a.shuffle.join(" ")')"
 			@printf "$(YELLOW)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▄'
 			@printf "$(CYAN)Finished Test with Leaks...?$(RESET)\n\n"
 			@$(MAKE) fclean
