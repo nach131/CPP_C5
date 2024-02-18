@@ -6,7 +6,7 @@
 #    By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 17:19:17 by nmota-bu          #+#    #+#              #
-#    Updated: 2024/02/15 18:48:45 by nmota-bu         ###   ########.fr        #
+#    Updated: 2024/02/19 00:18:36 by nmota-bu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ test:		re
 			@printf "$(CYAN)%*s\n$(RESET)" $(call get_terminal_width) | tr ' ' '▀'
 			@./$(NAME) "7 73 4 23"
 			@./$(NAME) "8 9 9 4 1"
+			@./$(NAME) "21 32 934    43    1"
 			@./$(NAME) "$$(ruby -e 'puts (1..20).to_a.shuffle.join(" ")')"
 # @./$(NAME) "$$(ruby -e 'puts (1..100).to_a.shuffle.join(" ")')"
 # @./$(NAME) "$$(ruby -e 'puts (1..500).to_a.shuffle.join(" ")')"
