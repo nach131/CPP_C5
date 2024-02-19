@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:52:56 by nmota-bu          #+#    #+#             */
-/*   Updated: 2024/02/15 10:38:33 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:00:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@ bool RPN::isValidRpn(const std::string &ori)
 
     int num = 0;
     int oper = 0;
+    int pos = 0;
 
     std::string token;
     while (iss >> token)
     {
+        if (pos == 1 && isOperator(token))
+            return false;
         if (isOperator(token))
             oper++;
         else if (isValidToken(token))
             num++;
+        pos++;
     }
     return (num - oper) == 1;
 }
